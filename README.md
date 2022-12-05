@@ -2,6 +2,14 @@
 
 Este repositorio contiene tanto el programa como la documentación respectiva (que en su momento no fue realizada) para un proyecto de primer año de programación. 
 
+## Archivos incluidos 
+
++ Dentro del repositorio existen dos códigos para el buscaminas, por un lado, el código original llamado buscaminasOriginal.py y por otro el buscaminasNuevo.py ambos cumplen las mismas funciones, pero el nuevo intenta mejorar las prácticas y el código en general. 
+
++ Los archivos bombaIMG1 y bombaIMG2 son archivos de ejemplo para la documentación. 
+
++ El archivo .txt es fundamental para la ejecución del código, mientras que el archivo .sal es el resultado de una primera ejecución. 
+
 ## Objetivo 
 
 El objetivo de este proyecto fue elaborar un minijuego de buscaminas con reglas y jugabilidad modificada (la cual será explicada más adelante), con esto se buscó que el estudiante aprendiera conceptos básicos de programación, principalmente en Python, a manejar listas y buscar en las mismas, además de aprender a leer y escribir archivos. 
