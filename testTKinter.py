@@ -169,8 +169,7 @@ class App(tk.Tk):
             foreground='black',
             
             )                                    
-        self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)
-        print('asdadasda',self.contador_mov)
+        self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)        
 
 if __name__ == '__main__':
     app = App(7, 7)
