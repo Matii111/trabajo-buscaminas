@@ -51,10 +51,13 @@ class App(tk.Tk):
             if (self.contador_mov == 0):
                 print('--FIN DEL JUEGO--')
                 print('!Ganaste!')                
-                messagebox.showinfo('Buscaminas', 'Haz terminado el tablero, ¡Felicidades!')
-                messagebox.askquestion('Buscaminas', 'Quieres jugar otro tablero?') 
-                self.crear_tablero_ui(rows, rows)
-                self.contador_mov = int(((rows)-2**2)-(((rows)-2**2)*0.10))    
+                messagebox.showinfo('Buscaminas', 'Haz terminado el tablero, ¡Felicidades!')                
+                if (messagebox.askquestion('Buscaminas', 'Quieres jugar otro tablero?') == 'yes'):
+                    self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)                    
+                    self.crear_tablero_ui(rows, rows)
+                    self.contador_mov = int(((rows)-1**2)-(((rows)-1**2)*0.10))                    
+                else:
+                    self.destroy()                    
         
 
     #reemplaza botones de tablero por valores de tablero con bombas
@@ -67,8 +70,7 @@ class App(tk.Tk):
             print('--FIN DEL JUEGO--')             
             messagebox.showinfo('¡Perdiste!', 'Has tocado una bomba. ¡Fin del juego!')
             self.crear_tablero_ui(rows, rows)
-            self.contador_mov = int(((rows)-2**2)-(((rows)-2**2)*0.10))            
-        
+            self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)                   
         if (row > 0 and col > 0 and board_content != '*'):
             self.set_button_value(row, col, rows, board_content)                    
     
@@ -160,7 +162,13 @@ class App(tk.Tk):
         self.title('Buscaminas')
         self.crear_tablero_ui(rows, cols)
         self.style = ttk.Style(self)
-        self.style.configure('TButton', font=('Helvetica', 20))                                    
+        self.style.configure(
+            'TButton', 
+            font=('Helvetica', 12),
+            background='gray',
+            foreground='black',
+            
+            )                                    
         self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)
         print('asdadasda',self.contador_mov)
 
