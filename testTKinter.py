@@ -19,16 +19,38 @@ class App(tk.Tk):
 
         verificar_bombas = self.verificar_bombas(insertar_bombas)        
 
+        boardStyle = ttk.Style()
+        # estlo de los botones exteriores        
+        #FDF0D1
+        #AC7D88
+        #85586F
+        #643843 
+        boardStyle.configure('boardStyle.TButton', 
+                             font=('Helvetica', 30), 
+                             background='#85586F',                              
+                             foreground='#643843',         
+                             focuscolor='#85586F',  
+                             focusbackground='#85586F'                     
+                             )
+        # estilo de los botones jugables
+        boardStyle.configure('boardStyleCoords.TButton',
+                              font=('Helvetica', 20, 'bold'), 
+                              background='#85586F', 
+                              foreground='#643843',
+                              focuscolor='#85586F',  
+                              focusbackground='#85586F' 
+                              )
+
         for i in range(rows):                                    
             for j in range(cols):                
-                button = ttk.Button(self, text='', command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
+                button = ttk.Button(self, text='', style='boardStyle.TButton',command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
                 button.bind('<Button-3>', lambda event, row=i, col=j: self.handle_button_click_right(row, col, rows, verificar_bombas, event))
                 if (j == 0 and i > 0):
-                    button = ttk.Button(self, text=chr(64+i), command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
+                    button = ttk.Button(self, style='boardStyleCoords.TButton', text=chr(64+i), command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
                     button.bind('<Button-3>', lambda event, row=i, col=j: self.handle_button_click_right(row, col, rows, verificar_bombas, event))
 
                 if (j > 0 and i == 0):
-                    button = ttk.Button(self, text=j, command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
+                    button = ttk.Button(self,  style='boardStyleCoords.TButton', text=j, command=lambda row=i, col=j: self.handle_button_click(row, col, rows, verificar_bombas))
                     button.bind('<Button-3>', lambda event, row=i, col=j: self.handle_button_click_right(row, col, rows, verificar_bombas, event))
                 button.grid(row=i, column=j, sticky='nsew')
                 self.buttons[i][j] = button  
@@ -160,15 +182,7 @@ class App(tk.Tk):
         self.geometry('700x600')
         self.resizable(0, 0)
         self.title('Buscaminas')
-        self.crear_tablero_ui(rows, cols)
-        self.style = ttk.Style(self)
-        self.style.configure(
-            'TButton', 
-            font=('Helvetica', 12),
-            background='gray',
-            foreground='black',
-            
-            )                                    
+        self.crear_tablero_ui(rows, cols)                                            
         self.contador_mov = int((((rows)-1)**2)-(((rows)-1)**2)*0.10)        
 
 if __name__ == '__main__':
